@@ -4,7 +4,7 @@ import BannerImage from "@/assets/banner.png";
 
 const Banner = () => {
   return (
-    <header className="px-4 lg:px-10 py-6">
+    <header className="px-10 lg:px-15 py-6">
       <div className="flex flex-col-reverse md:flex-row justify-between items-center bg-[#222630] rounded-2xl p-6 md:p-12 gap-8 border border-gray-800">
         <div className="flex-1 space-y-4 text-center md:text-left">
           <p className="text-[#C2F800] text-xs font-semibold tracking-wider uppercase">

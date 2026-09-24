@@ -1,8 +1,23 @@
 import Image from "next/image";
 import React from "react";
 import NavberLOgo from "@/assets/logo.png";
+import Link from "next/link";
 
 const Navber = () => {
+  const navLinks = (
+    <>
+      <li>
+        <Link href="/" className="text-gray-300 hover:text-yellow-200">
+          Workouts
+        </Link>
+      </li>
+      <li>
+        <Link href="/MyPlan" className="text-gray-300 hover:text-yellow-200">
+          My Plan
+        </Link>
+      </li>
+    </>
+  );
   return (
     <nav className="bg-[#0C0D10] sticky top-0 z-50">
       <div className="container mx-auto px-10 py-2 navbar  shadow-sm">
@@ -30,12 +45,7 @@ const Navber = () => {
               tabIndex={-1}
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
-              <li>
-                <a>Workouts</a>
-              </li>
-              <li>
-                <a>My Plan</a>
-              </li>
+             {navLinks}
             </ul>
           </div>
           <div className="flex gap-1 items-center text-white font-semibold text-2xl">
@@ -45,12 +55,7 @@ const Navber = () => {
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">
-            <li>
-              <a className=" text-[#C2F800]">Workout</a>
-            </li>
-            <li>
-              <a className="text-[#D1D5DB]">My Plan</a>
-            </li>
+           {navLinks}
           </ul>
         </div>
         <div className="navbar-end gap-2">
