@@ -3,6 +3,7 @@ import "./globals.css";
 import Navber from "./Component/Shared/Navber";
 import Footer from "./Component/Shared/Footer";
 import ContextProvider from "@/Context/DetailContext";
+import { ToastContainer } from "react-toastify";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,6 +32,7 @@ export default function RootLayout({ children }) {
 
         <Navber></Navber>
         {children}
+         <ToastContainer />
         <Footer></Footer>
         </ContextProvider>
         </body>

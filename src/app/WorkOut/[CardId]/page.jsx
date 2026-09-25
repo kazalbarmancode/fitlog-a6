@@ -1,7 +1,7 @@
+import AddPlan from "@/app/MyPlan/AddPlan";
+import SavedBotton from "@/app/MyPlan/SavedBotton";
 import Image from "next/image";
 import React from "react";
-import { FaBookmark } from "react-icons/fa";
-import { IoAddCircleOutline } from "react-icons/io5";
 
 const getLibraryData = async () => {
   try {
@@ -33,7 +33,9 @@ const Page = async ({ params }) => {
 
   if (!detail) {
     return (
-      <div className="text-center py-20 text-red-500 font-bold text-xl bg-[#121212] min-h-screen"> Not Found!
+      <div className="text-center py-20 text-red-500 font-bold text-xl bg-[#121212] min-h-screen">
+        {" "}
+        Not Found!
       </div>
     );
   }
@@ -153,14 +155,9 @@ const Page = async ({ params }) => {
           )}
 
           <div className="flex items-center gap-3 pt-2">
-            <button className="flex-1 bg-[#A3E635] hover:bg-[#8ed324] text-black font-bold text-xs md:text-sm py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-all duration-200">
-              <IoAddCircleOutline className="text-lg" />
-              <span>Add to todays plan</span>
-            </button>
-            <button className="bg-[#27272A] hover:bg-[#3f3f46] text-white border border-[#3F3F46] font-semibold text-xs md:text-sm py-3 px-4 rounded-xl flex items-center justify-center gap-2 transition-all duration-200">
-              <FaBookmark className="text-xs text-zinc-400" />
-              <span>Save for later</span>
-            </button>
+           
+            <AddPlan detail={detail}></AddPlan>
+          <SavedBotton detail={detail}></SavedBotton>
           </div>
         </div>
       </div>

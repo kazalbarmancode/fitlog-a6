@@ -2,18 +2,21 @@
 import React, { createContext, useState } from 'react';
 
 
-export const DetailsContexts = createContext({})
+export const PlanContexts = createContext({})
 const ContextProvider = ({children}) => {
-const [details,setDetails]=useState([])
+const [addPlan,setAddPlan]=useState([])
+const [savedBotton,setSavedBotton]=useState([])
+
 const sharedData={
-    details,setDetails
+addPlan,setAddPlan,savedBotton,setSavedBotton
 }
     return (
         <div>
-            <DetailsContexts.Provider value={sharedData }>
-            {children}
-
-            </DetailsContexts.Provider>
+           <PlanContexts.Provider value={sharedData} >
+            
+             {children}
+             
+             </PlanContexts.Provider>
         </div>
     );
 };

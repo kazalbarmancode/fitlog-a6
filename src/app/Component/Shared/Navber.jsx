@@ -2,6 +2,8 @@ import Image from "next/image";
 import React from "react";
 import NavberLOgo from "@/assets/logo.png";
 import Link from "next/link";
+import Save from "../SavePlan/Save";
+import PlanPoin from "../SavePlan/PlanPoint";
 
 const Navber = () => {
   const navLinks = (
@@ -45,7 +47,7 @@ const Navber = () => {
               tabIndex={-1}
               className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
             >
-             {navLinks}
+              {navLinks}
             </ul>
           </div>
           <div className="flex gap-1 items-center text-white font-semibold text-2xl">
@@ -54,13 +56,11 @@ const Navber = () => {
           </div>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1">
-           {navLinks}
-          </ul>
+          <ul className="menu menu-horizontal px-1">{navLinks}</ul>
         </div>
-        <div className="navbar-end gap-2">
-          <button className="text-[#D1D5DB]">Plan 0</button>
-          <button className="text-[#D1D5DB]">Saved 0</button>
+        <div className="navbar-end gap-5">
+          <PlanPoin></PlanPoin>
+          <Save></Save>
         </div>
       </div>
     </nav>
