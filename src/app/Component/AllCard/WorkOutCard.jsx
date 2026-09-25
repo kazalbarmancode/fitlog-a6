@@ -1,10 +1,11 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 import { FaRegStar } from "react-icons/fa";
 import { IoTimeSharp } from "react-icons/io5";
 import { LuFlame } from "react-icons/lu";
 
-const WorkOutCard = ({ library }) => {
+const WorkOutCard = ({ library={} }) => {
   const {
     image,
     rating,
@@ -13,10 +14,13 @@ const WorkOutCard = ({ library }) => {
     duration,
     caloriesBurned,
   } = library;
+ 
   return (
-    <div className="bg-[#14161C] border border-[#272A34] rounded-2xl overflow-hidden hover:border-lime-400/50 transition-all duration-300 flex flex-col">
+    <Link href={`/WorkOut/${library.id}`}>
+   
+    <div  className="bg-[#14161C] border border-[#272A34] rounded-2xl overflow-hidden hover:border-lime-400/50 transition-all duration-300 flex flex-col">
       <div className="relative w-full h-48 sm:h-52 overflow-hidden bg-zinc-800">
-        <Image src={image} alt={name} fill className="object-cover" />
+        <Image src={image} alt={name} width={444}height={444} className="object-cover" />
       </div>
 
       <div className="p-4 flex flex-col grow justify-between gap-3">
@@ -57,6 +61,7 @@ const WorkOutCard = ({ library }) => {
         </div>
       </div>
     </div>
+    </Link>
   );
 };
 
