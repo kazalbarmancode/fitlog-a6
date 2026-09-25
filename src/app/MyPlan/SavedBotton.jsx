@@ -1,36 +1,77 @@
 "use client";
 
 import { PlanContexts } from "@/Context/DetailContext";
-import Link from "next/link";
 import React, { useContext } from "react";
+import { FaBookmark, FaCheck } from "react-icons/fa";
 import { Bounce, toast } from "react-toastify";
 
 const SavedBotton = ({ detail }) => {
-  const { savedBotton, setSavedBotton } = useContext(PlanContexts);
-  const handleSavedPlan = () => {
-    setSavedBotton([...savedBotton, detail]);
-    toast.success("🦄 Add to wishlist!", {
+  const { savedBotton = [], setSavedBotton } = useContext(PlanContexts);
+
+  const currentId = detail?.id || detail?._id;
+
+  const isAlreadySaved = Boolean(
+    currentId &&
+    savedBotton.some(
+      (item) => String(item?.id || item?._id) === String(currentId),
+    ),
+  );
+
+  const handleSavedPlan = (e) => {
+    e.stopPropagation();
+
+    if (!detail || !currentId) {
+      toast.error("Invalid details!", {
+        position: "top-right",
+        theme: "dark",
+      });
+      return;
+    }
+
+    if (isAlreadySaved) {
+      toast.warning("Already saved for later!", {
+        position: "top-right",
+        autoClose: 3000,
+        theme: "dark",
+        transition: Bounce,
+      });
+      return;
+    }
+
+    setSavedBotton((prev) => [...prev, detail]);
+
+    toast.success("Saved for later!", {
       position: "top-right",
       autoClose: 2000,
-      hideProgressBar: false,
-      closeOnClick: false,
-      pauseOnHover: true,
-      draggable: true,
-      progress: undefined,
-      theme: "light",
+      theme: "dark",
       transition: Bounce,
     });
   };
+
   return (
     <div>
-      <Link href="/MyPlan">
-        <button
-          className="btn border-base-300 font-semibold px-8"
-          onClick={() => handleSavedPlan()}
-        >
-          Save for later
-        </button>
-      </Link>
+      <button
+        type="button"
+        onClick={handleSavedPlan}
+        disabled={isAlreadySaved}
+        className={`font-semibold px-8 py-3 rounded-xl transition-all border flex items-center justify-center gap-2 ${
+          isAlreadySaved
+            ? "bg-zinc-800 text-zinc-500 border-zinc-700 cursor-not-allowed" // Disabled Style
+            : "bg-[#27272A] hover:bg-[#3f3f46] text-white border-[#3F3F46] cursor-pointer" // Active Style
+        }`}
+      >
+        {isAlreadySaved ? (
+          <>
+            <FaCheck className="text-xs text-[#A3E635]" />
+            <span>Saved</span>
+          </>
+        ) : (
+          <>
+            <FaBookmark className="text-xs text-zinc-400" />
+            <span>Save for later</span>
+          </>
+        )}
+      </button>
     </div>
   );
 };
