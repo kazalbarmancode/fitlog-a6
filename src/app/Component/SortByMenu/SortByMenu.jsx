@@ -25,7 +25,7 @@ const SortByMenu = ({ value, onChange }) => {
           Calories
         </option>
         <option value="name" className="bg-[#18181B] text-white">
-          Name
+          Rating
         </option>
       </select>
       <IoChevronDown className="absolute right-2 text-zinc-400 pointer-events-none" />

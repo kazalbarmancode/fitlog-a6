@@ -2,13 +2,13 @@
 
 import React, { useContext, useMemo, useState } from "react";
 import { PlanContexts } from "@/Context/DetailContext";
-import { IoClose, IoTime } from "react-icons/io5";
-import { FaCheck, FaFire } from "react-icons/fa";
 import Link from "next/link";
 import Image from "next/image";
 import { CiStar } from "react-icons/ci";
 import { Bounce, toast } from "react-toastify";
 import SortByMenu from "../Component/SortByMenu/SortByMenu";
+import { FaCheck, FaFire } from "react-icons/fa";
+import { IoClose, IoTime } from "react-icons/io5";
 
 const MyPlanPage = () => {
   const {
@@ -213,7 +213,7 @@ const MyPlanPage = () => {
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-3 w-full sm:w-auto justify-end">
+                 <div className="flex items-center gap-3 w-full sm:w-auto justify-end">
                     <Link
                       href={`/WorkOut/${itemId}`}
                       className="text-xs text-zinc-400 hover:text-white transition-colors px-2 py-1 font-medium"
