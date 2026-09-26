@@ -13,7 +13,7 @@ const Navber = () => {
     </>
   );
   return (
-    <nav className="bg-[#0C0D10] sticky top-0 z-50">
+    <nav className="bg-[#3d3d3f] sticky top-0 z-50">
       <div className="container mx-auto px-10 py-2 navbar  shadow-sm">
         <div className="navbar-start">
           <div className="dropdown">
@@ -37,7 +37,7 @@ const Navber = () => {
             </div>
             <ul
               tabIndex={-1}
-              className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content bg-[#3d3d3f] shadow rounded-box z-1 mt-3 w-52 p-2 "
             >
               {navLinks}
             </ul>
