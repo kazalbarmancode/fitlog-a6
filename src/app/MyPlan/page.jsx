@@ -44,8 +44,8 @@ const MyPlanPage = () => {
           (Number(b.caloriesBurned) || 0) - (Number(a.caloriesBurned) || 0)
         );
       }
-      if (sortBy === "name") {
-        return (a.name || "").localeCompare(b.name || "");
+      if (sortBy === "rating") {
+        return (a.rating || "").localeCompare(b.rating || "");
       }
       return 0;
     });
