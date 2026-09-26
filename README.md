@@ -1,36 +1,25 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# FitLog - Personal Fitness & Workout Tracker
 
-## Getting Started
+FitLog হলো একটি আধুনিক এবং রেসপন্সিভ ফিটনেস ট্র্যাকিং ওয়েব অ্যাপ্লিকেশন। এর মাধ্যমে ব্যবহারকারীরা তাদের দৈনিক ওয়ার্কআউট প্ল্যান তৈরি করতে পারেন, পছন্দসই এক্সারসাইজ সেভ করে রাখতে পারেন এবং ক্যালোরি ও সময় ট্র্যাক করতে পারেন।
 
-First, run the development server:
+##  Features (মূল বৈশিষ্ট্যসমূহ)
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- ** Dashboard Summary:** দৈনিক মোট এক্সারসাইজ সংখ্যা, ব্যায়ামের সময় (Minutes) এবং পোড়ানো ক্যালোরি (Calories) একনজরে দেখার সুবিধা।
+- ** Today's Plan:** আজকের দিনের নির্দিষ্ট ওয়ার্কআউটগুলো যোগ এবং ম্যানেজ করার অপশন।
+- ** Saved Workouts:** পছন্দের এক্সারসাইজগুলো পরবর্তীতে করার জন্য সেভ করে রাখার সুবিধা।
+- ** Sort & Filter:** সময় (Duration), ক্যালোরি (Calories Burned) এবং নাম (Name) অনুযায়ী ওয়ার্কআউট ফিল্টার বা সর্ট করার সুবিধা।
+- ** Track Completion:** কাজ শেষ হলে "Mark as Done" দিয়ে সম্পন্ন করার ট্র্যাক রাখা।
+- ** Fully Responsive:** মোবাইল, ডেক্সটপ যেকোনো ডিভাইসে ব্যবহার উপযোগী (Tailwind CSS & DaisyUI দ্বারা তৈরি)।
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+##  Tech Stack (যেসব প্রযুক্তি ব্যবহার করা হয়েছে)
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Framework:** [Next.js]
+- **Library:** [React.js]
+- **Styling:** [Tailwind CSS]& [DaisyUI]
+- **Icons:** React Icons (`react-icons/io5`, `react-icons/fa`, `react-icons/ci`)
+- **Notifications:** React Toastify
+- **Deployment:** Vercel
 
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---

@@ -2,7 +2,7 @@ import React from "react";
 import WorkOutCard from "./AllCard/WorkOutCard";
 
 const getLaibraryData = async () => {
-  const res = await fetch("https://api.abcz.workers.dev/api/fitlog");
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_BASE_URL}api.abcz.workers.dev/api/fitlog`);
   if (!res.ok) throw new Error("Failed to fetch data");
   const data = await res.json();
   return data;
