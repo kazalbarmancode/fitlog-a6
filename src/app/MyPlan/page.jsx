@@ -34,18 +34,18 @@ const MyPlanPage = () => {
 
   const sortedList = useMemo(() => {
     if (!rawList || !Array.isArray(rawList)) return [];
-    const currentSort = sortBy?.toLowerCase();
+  
 
     return [...rawList].sort((a, b) => {
-      if (currentSort === "duration") {
+      if (sortBy === "duration") {
         return (Number(b.duration) || 0) - (Number(a.duration) || 0);
       }
-      if (currentSort  === "calories") {
+      if (sortBy  === "calories") {
         return (
           (Number(b.caloriesBurned) || 0) - (Number(a.caloriesBurned) || 0)
         );
       }
-  if (currentSort === "rating") {
+  if (sortBy === "rating") {
       return (Number(b.rating) || 0) - (Number(a.rating) || 0);
     }
       return 0;
