@@ -40,7 +40,7 @@ const SavedBotton = ({ detail }) => {
 
     setSavedBotton((prev) => [...prev, detail]);
 
-    toast.success("Saved for later!", {
+    toast.success(`${detail.name} Added To Save`, {
       position: "top-right",
       autoClose: 2000,
       theme: "dark",
@@ -56,8 +56,8 @@ const SavedBotton = ({ detail }) => {
         disabled={isAlreadySaved}
         className={`font-semibold px-8 py-3 rounded-xl transition-all border flex items-center justify-center gap-2 ${
           isAlreadySaved
-            ? "bg-zinc-800 text-zinc-500 border-zinc-700 cursor-not-allowed" // Disabled Style
-            : "bg-[#27272A] hover:bg-[#3f3f46] text-white border-[#3F3F46] cursor-pointer" // Active Style
+            ? "bg-zinc-800 text-zinc-500 border-zinc-700 cursor-not-allowed" 
+            : "bg-[#27272A] hover:bg-[#3f3f46] text-white border-[#3F3F46] cursor-pointer"
         }`}
       >
         {isAlreadySaved ? (

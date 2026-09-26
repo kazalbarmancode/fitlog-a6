@@ -41,7 +41,7 @@ const AddPlan = ({ detail }) => {
 
     setAddPlan((prevPlan) => [...prevPlan, detail]);
 
-    toast.success("Added to today's plan!", {
+    toast.success(`${detail.name} Added To  Today's Plan`, {
       position: "top-right",
       autoClose: 2000,
       theme: "dark",
@@ -57,8 +57,8 @@ const AddPlan = ({ detail }) => {
         disabled={isAlreadyAdded}
         className={`font-semibold px-8 py-3 rounded-xl transition-all border flex items-center justify-center gap-2 ${
           isAlreadyAdded
-            ? "bg-zinc-800 text-zinc-500 border-zinc-700 cursor-not-allowed" // Disabled Style
-            : "bg-[#A3E635] hover:bg-[#8ed324] text-black border-[#A3E635] cursor-pointer" // Active Style
+            ? "bg-zinc-800 text-zinc-500 border-zinc-700 cursor-not-allowed" 
+            : "bg-[#A3E635] hover:bg-[#8ed324] text-black border-[#A3E635] cursor-pointer" 
         }`}
       >
         {isAlreadyAdded ? (

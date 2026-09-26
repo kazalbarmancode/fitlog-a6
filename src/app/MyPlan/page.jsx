@@ -20,7 +20,6 @@ const MyPlanPage = () => {
     setSortBy,
   } = useContext(PlanContexts);
   const [activeTab, setActiveTab] = useState("today");
-  // const currentList = activeTab === "today" ? addPlan : savedBotton;
 
   const rawList = activeTab === "today" ? addPlan : savedBotton;
   const totalExercises = rawList.length;
@@ -46,18 +45,21 @@ const MyPlanPage = () => {
         );
       }
       if (sortBy === "name") {
-        return (a.name || "").localeCompare(b.name || ""); // A to Z
+        return (a.name || "").localeCompare(b.name || "");
       }
       return 0;
     });
   }, [rawList, sortBy]);
 
-  const handleRemove = (id) => {
+  const handleRemove = (item) => {
+    const itemId = item.id || item._id;
+    const itemName = item.name || "Workout";
+
     if (activeTab === "today") {
       setAddPlan(
-        addPlan.filter((item) => String(item.id || item._id) !== String(id)),
+        addPlan.filter((el) => String(el.id || el._id) !== String(itemId))
       );
-      toast.error(`${id} Number Card Remove From Today's Plan `, {
+      toast.error(`"${itemName}" removed from Today's Plan`, {
         position: "top-right",
         autoClose: 2000,
         hideProgressBar: false,
@@ -70,11 +72,9 @@ const MyPlanPage = () => {
       });
     } else {
       setSavedBotton(
-        savedBotton.filter(
-          (item) => String(item.id || item._id) !== String(id),
-        ),
+        savedBotton.filter((el) => String(el.id || el._id) !== String(itemId))
       );
-      toast.error(`${id} Number Card Remove From Saved `, {
+      toast.error(`"${itemName}" removed from Saved`, {
         position: "top-right",
         autoClose: 2000,
         hideProgressBar: false,
@@ -87,8 +87,9 @@ const MyPlanPage = () => {
       });
     }
   };
-  const handleMarkAsDone = (item) => {
-    toast.success(`${item.name || "WorkOut"} Marked as completed!`);
+ const handleMarkAsDone = (item) => {
+    const itemName = item.name || "Workout";
+    toast.success(`"${itemName}" marked as completed!`);
   };
   return (
     <div className="min-h-screen bg-[#121212] text-white p-6 md:p-12 font-sans flex flex-col justify-between">
@@ -229,7 +230,7 @@ const MyPlanPage = () => {
                     </button>
 
                     <button
-                      onClick={() => handleRemove(itemId)}
+                      onClick={() => handleRemove(item)}
                       className="text-zinc-500 hover:text-white p-2 rounded-lg transition-colors"
                       title="Remove"
                     >
