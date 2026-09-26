@@ -14,7 +14,7 @@ const SortByMenu = ({ value, onChange }) => {
     <div className="relative flex items-center bg-[#18181B] border border-[#27272A] px-3 py-1.5 rounded-lg text-xs text-zinc-400">
       <span className="mr-1.5 shrink-0">Sort By</span>
       <select
-        value={String(selectedValue)} 
+        value={selectedValue || "duration"} 
         onChange={(e) => onChange(e.target.value)}
         className="bg-transparent text-white font-medium cursor-pointer focus:outline-none appearance-none pr-5 z-10"
       >
@@ -24,7 +24,7 @@ const SortByMenu = ({ value, onChange }) => {
         <option value="calories" className="bg-[#18181B] text-white">
           Calories
         </option>
-        <option value="name" className="bg-[#18181B] text-white">
+        <option value="rating" className="bg-[#18181B] text-white">
           Rating
         </option>
       </select>

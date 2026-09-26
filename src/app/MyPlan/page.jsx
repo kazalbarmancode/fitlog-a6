@@ -34,19 +34,20 @@ const MyPlanPage = () => {
 
   const sortedList = useMemo(() => {
     if (!rawList || !Array.isArray(rawList)) return [];
+    const currentSort = sortBy?.toLowerCase();
 
     return [...rawList].sort((a, b) => {
-      if (sortBy === "duration") {
+      if (currentSort === "duration") {
         return (Number(b.duration) || 0) - (Number(a.duration) || 0);
       }
-      if (sortBy === "calories") {
+      if (currentSort  === "calories") {
         return (
           (Number(b.caloriesBurned) || 0) - (Number(a.caloriesBurned) || 0)
         );
       }
-      if (sortBy === "rating") {
-        return (a.rating || "").localeCompare(b.rating || "");
-      }
+  if (currentSort === "rating") {
+      return (Number(b.rating) || 0) - (Number(a.rating) || 0);
+    }
       return 0;
     });
   }, [rawList, sortBy]);
