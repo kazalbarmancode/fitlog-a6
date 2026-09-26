@@ -1,29 +1,56 @@
 "use client";
 
-import React, { useContext, useState } from "react";
+import React, { useContext, useMemo, useState } from "react";
 import { PlanContexts } from "@/Context/DetailContext";
-import { IoChevronDown, IoClose, IoTime } from "react-icons/io5";
+import { IoClose, IoTime } from "react-icons/io5";
 import { FaCheck, FaFire } from "react-icons/fa";
 import Link from "next/link";
 import Image from "next/image";
 import { CiStar } from "react-icons/ci";
 import { Bounce, toast } from "react-toastify";
+import SortByMenu from "../Component/SortByMenu/SortByMenu";
 
 const MyPlanPage = () => {
-  const { addPlan, setAddPlan, savedBotton, setSavedBotton } =
-    useContext(PlanContexts);
+  const {
+    addPlan,
+    setAddPlan,
+    savedBotton,
+    setSavedBotton,
+    sortBy,
+    setSortBy,
+  } = useContext(PlanContexts);
   const [activeTab, setActiveTab] = useState("today");
-  const currentList = activeTab === "today" ? addPlan : savedBotton;
+  // const currentList = activeTab === "today" ? addPlan : savedBotton;
 
-  const totalExercises = currentList.length;
+  const rawList = activeTab === "today" ? addPlan : savedBotton;
+  const totalExercises = rawList.length;
 
-  const totalMinutes = currentList.reduce((acc, curr) => {
+  const totalMinutes = rawList.reduce((acc, curr) => {
     return acc + (Number(curr.duration) || 0);
   }, 0);
 
-  const totalCalories = currentList.reduce((acc, curr) => {
+  const totalCalories = rawList.reduce((acc, curr) => {
     return acc + (Number(curr.caloriesBurned) || 0);
   }, 0);
+
+  const sortedList = useMemo(() => {
+    if (!rawList || !Array.isArray(rawList)) return [];
+
+    return [...rawList].sort((a, b) => {
+      if (sortBy === "duration") {
+        return (Number(b.duration) || 0) - (Number(a.duration) || 0);
+      }
+      if (sortBy === "calories") {
+        return (
+          (Number(b.caloriesBurned) || 0) - (Number(a.caloriesBurned) || 0)
+        );
+      }
+      if (sortBy === "name") {
+        return (a.name || "").localeCompare(b.name || ""); // A to Z
+      }
+      return 0;
+    });
+  }, [rawList, sortBy]);
 
   const handleRemove = (id) => {
     if (activeTab === "today") {
@@ -128,15 +155,12 @@ const MyPlanPage = () => {
               Saved
             </button>
           </div>
-
-          <div className="flex items-center gap-2 text-xs text-zinc-400 bg-[#18181B] border border-[#27272A] px-3 py-1.5 rounded-lg cursor-pointer">
-            <span>Sort By</span>
-            <span className="text-white font-medium">Duration</span>
-            <IoChevronDown className="text-zinc-400" />
+          <div>
+            <SortByMenu value={sortBy} onChange={setSortBy}></SortByMenu>
           </div>
         </div>
 
-        {currentList.length === 0 ? (
+        {sortedList.length === 0 ? (
           <div className="bg-[#18181B]/50 border border-[#27272A] border-dashed rounded-2xl py-20 px-4 text-center flex flex-col items-center justify-center space-y-4">
             <h2 className="text-base md:text-lg font-bold tracking-wider uppercase text-white">
               NOTHING HERE YET
@@ -150,7 +174,7 @@ const MyPlanPage = () => {
           </div>
         ) : (
           <div className="space-y-4">
-            {currentList.map((item) => {
+            {sortedList.map((item) => {
               const itemId = item.id || item._id;
               return (
                 <div

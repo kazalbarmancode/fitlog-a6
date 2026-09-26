@@ -13,7 +13,7 @@ const Footer = () => {
           </div>
           <div>
 
-          <p className=' text-[#6B7280]'>
+          <p className=' text-[#6B7280] text-[10px] md:text-[12px] '>
             © 2026 FitLog — Workout Library. Train hard, log honest.
           </p>
           </div>

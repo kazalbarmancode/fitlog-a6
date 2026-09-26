@@ -1,23 +1,15 @@
 import Image from "next/image";
 import React from "react";
 import NavberLOgo from "@/assets/logo.png";
-import Link from "next/link";
 import Save from "../SavePlan/Save";
 import PlanPoin from "../SavePlan/PlanPoint";
+import NavLink from "../NavLink/NavLink";
 
 const Navber = () => {
-  const navLinks = (
+ const navLinks = (
     <>
-      <li>
-        <Link href="/" className="text-gray-300 hover:text-yellow-200">
-          Workouts
-        </Link>
-      </li>
-      <li>
-        <Link href="/MyPlan" className="text-gray-300 hover:text-yellow-200">
-          My Plan
-        </Link>
-      </li>
+      <NavLink href="/">Workouts</NavLink>
+      <NavLink href="/MyPlan">My Plan</NavLink>
     </>
   );
   return (
